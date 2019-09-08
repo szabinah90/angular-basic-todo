@@ -44,7 +44,7 @@ export class ListComponent implements OnInit {
   ngOnInit() {
   }
 
-  removeItem(id: number) {
+  onRemoveItem(id: number) {
     const modifiedTodos = this.todos.filter(x => x.id !== id);
     this.todos = modifiedTodos;
   }

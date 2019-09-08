@@ -7,10 +7,11 @@ import { ListComponent } from './list/list.component';
 import { NewItemComponent } from './new-item/new-item.component';
 import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatListModule} from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
+import { ItemComponent } from './list/item/item.component';
 
 
 @NgModule({
-  declarations: [TodoComponent, ListComponent, NewItemComponent],
+  declarations: [TodoComponent, ListComponent, NewItemComponent, ItemComponent],
   exports: [
     TodoComponent
   ],
