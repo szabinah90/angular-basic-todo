@@ -1,0 +1,13 @@
+<form [formGroup]="newTodoItem">
+  <div class="form-container">
+    <div class="input-container">
+      <mat-form-field>
+        <input matInput type="text" [formControl]="newItemText" placeholder="Todo text" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="date" [formControl]="newItemDeadline" placeholder="Deadline"/>
+      </mat-form-field>
+    </div>
+    <button mat-flat-button type="button" color="primary" (click)="addNew()">Add</button>
+  </div>
+</form>

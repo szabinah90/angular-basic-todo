@@ -1,0 +1,8 @@
+<mat-list *ngFor="let todo of todos">
+  <div class="list-item-container">
+      <mat-list-item>
+        {{todo.id}}. {{todo.text}}, {{todo.deadline}}
+      </mat-list-item>
+      <button mat-flat-button color="primary" type="button" (click)="removeItem(todo.id)">X</button>
+  </div>
+</mat-list>

@@ -3,14 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import {TodoModule} from './components/todo/todo.module';
+import { NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    NoopAnimationsModule,
+    AppRoutingModule,
+    TodoModule
   ],
   providers: [],
   bootstrap: [AppComponent]

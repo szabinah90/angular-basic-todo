@@ -1,1 +1,7 @@
-<p>todo works!</p>
+<mat-card class="w-50 m-auto">
+  <mat-card-title>Basic ToDo App</mat-card-title>
+  <mat-card-content>
+    <todo-list [newItem]="newItem"></todo-list>
+    <new-todo-item (itemToAdd)="onAddNew($event)"></new-todo-item>
+  </mat-card-content>
+</mat-card>
