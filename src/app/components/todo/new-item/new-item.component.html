@@ -1,5 +1,4 @@
 <form [formGroup]="newTodoItem">
-  <div class="form-container">
     <div class="input-container">
       <mat-form-field>
         <input matInput type="text" [formControl]="newItemText" placeholder="Todo text" />
@@ -8,6 +7,11 @@
         <input matInput type="date" [formControl]="newItemDeadline" placeholder="Deadline"/>
       </mat-form-field>
     </div>
-    <button mat-flat-button type="button" color="primary" (click)="addNew()">Add</button>
-  </div>
+    <div class="buttons">
+      <button mat-flat-button class="svg-btn purple" type="button" (click)="addNew()">
+        <svg aria-hidden="true" focusable="false">
+          <use xlink:href="../../../../../assets/icons/icons.svg#add-2"></use>
+        </svg>
+      </button>
+    </div>
 </form>

@@ -48,4 +48,9 @@ export class ListComponent implements OnInit {
     const modifiedTodos = this.todos.filter(x => x.id !== id);
     this.todos = modifiedTodos;
   }
+
+  onEditItem(editedItem: ITodo) {
+    const modifiedTodos = this.todos.filter(x => x.id !== editedItem.id);
+    this.todos = ([...modifiedTodos, editedItem]).sort((x, y) => x.id - y.id);
+  }
 }

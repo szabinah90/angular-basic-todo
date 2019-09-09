@@ -6,10 +6,26 @@
     align-items: baseline;
     padding-left: 0;
     padding-right: 0;
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+  }
 }
 
 ::ng-deep .mat-list-base .mat-list-item .mat-list-item-content,
 .mat-list-base .mat-list-option .mat-list-item-content {
   padding-left: 0;
   padding-right: 0;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  .input-container {
+    width: 65%;
+    display: flex;
+    justify-content: space-between;
+  }
 }

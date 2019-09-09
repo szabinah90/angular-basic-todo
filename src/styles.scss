@@ -1,3 +1,88 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
+.svg-btn {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid transparent;
+  background-color: transparent;
+  margin: 5px;
+  outline: none;
+  &:disabled {
+    background-color: transparent;
+    cursor: not-allowed !important;
+    svg: {
+      fill: #c6c8ca !important;
+    }
+  }
+  &:active {
+    outline: none;
+  }
+  svg {
+    height: 18px;
+    width: 18px;
+    fill: #848E98;
+  }
+  &.medium {
+    width: 18px;
+    height: 18px;
+    margin: 3px;
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+  &.small {
+    width: 14px;
+    height: 14px;
+    margin: 0px;
+    svg {
+      width: 10px;
+      height: 10px;
+    }
+  }
+  &.yellow:hover {
+    svg {
+      fill: #f3cb53;
+    }
+  }
+  &.red:hover {
+    svg {
+      fill: #d9534f;
+    }
+  }
+  &.blue:hover {
+    svg {
+      fill: #1264a3;
+    }
+  }
+  &.green:hover {
+    svg {
+      fill: #64c37d
+    }
+  }
+  &.white:hover {
+    svg {
+      fill: white;
+    }
+  }
+  &.purple:hover {
+    svg {
+      fill: #673ab7;
+    }
+  }
+  &.green:hover {
+    svg {
+      fill: #00e6ac;
+    }
+  }
+  &.pink:hover {
+    svg {
+      fill: #ff66b3;
+    }
+  }
+}
+

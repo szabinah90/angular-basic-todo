@@ -33,5 +33,6 @@ export class NewItemComponent implements OnInit {
     if (this.newTodoItem.valid) {
       this.itemToAdd.emit(this.newTodoItem.value);
     }
+    this.newTodoItem.reset();
   }
 }
