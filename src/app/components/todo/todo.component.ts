@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {ITodo} from '../../shared/interfaces/todo/todo.interface';
 
 @Component({
   selector: 'app-todo',
@@ -7,13 +6,8 @@ import {ITodo} from '../../shared/interfaces/todo/todo.interface';
   styleUrls: ['./todo.component.scss']
 })
 export class TodoComponent implements OnInit {
-  newItem: ITodo;
   constructor() { }
 
   ngOnInit() {
-  }
-
-  onAddNew(newItem: ITodo) {
-    this.newItem = newItem;
   }
 }

@@ -1,14 +1,14 @@
 <mat-list-item>
   <ng-container *ngIf="!editMode; else editing">
     <div class="list-item-container">
-      {{ todoItem.id }}. {{ todoItem.text }}, {{ todoItem.deadline }}
+      {{ index }}. {{ todoItem.text }}, {{ todoItem.deadline }}
       <div class="buttons">
-        <button mat-flat-button class="svg-btn green" type="button" (click)="editItem(todoItem)">
+        <button class="svg-btn green" type="button" (click)="editItem(todoItem)">
           <svg aria-hidden="true" focusable="false">
             <use xlink:href="../../../../../assets/icons/icons.svg#pencil"></use>
           </svg>
         </button>
-        <button mat-flat-button class="svg-btn red" type="button" (click)="removeItem(todoItem.id)">
+        <button class="svg-btn red" type="button" (click)="removeItem(todoItem.id)">
           <svg aria-hidden="true" focusable="false">
             <use xlink:href="../../../../../assets/icons/icons.svg#trash"></use>
           </svg>
@@ -20,19 +20,32 @@
     <form [formGroup]="editItemForm">
       <div class="input-container">
         <mat-form-field>
-          <input matInput type="text" [formControl]="editText" />
+          <input matInput type="text" [formControl]="editText" placeholder="Todo text*"/>
+          <mat-error *ngIf="editText.hasError('required')">
+            This field is required!
+          </mat-error>
+          <mat-error *ngIf="editText.hasError('maxlength')">
+            Max. character: 50!
+          </mat-error>
         </mat-form-field>
         <mat-form-field>
-          <input matInput type="date" [formControl]="editDeadline" />
+          <input matInput type="date" [formControl]="editDeadline" placeholder="Deadline*"/>
+          <mat-error *ngIf="editDeadline.hasError('required')">
+            This field is required!
+          </mat-error>
+          <mat-error *ngIf="editDeadline.hasError('checkDeadline')">
+            Deadline cannot be in the past!
+          </mat-error>
         </mat-form-field>
       </div>
           <div class="buttons">
-            <button mat-flat-button class="svg-btn blue" type="button" (click)="saveEditedItem(todoItem.id)">
+            <button class="svg-btn blue" type="button" (click)="saveEditedItem()"
+                    [disabled]="!this.editItemForm.valid">
               <svg aria-hidden="true" focusable="false">
                 <use xlink:href="../../../../../assets/icons/icons.svg#save"></use>
               </svg>
             </button>
-            <button mat-flat-button class="svg-btn red" type="button" (click)="cancelEdit()">
+            <button class="svg-btn red" type="button" (click)="cancelEdit()">
               <svg aria-hidden="true" focusable="false">
                 <use xlink:href="../../../../../assets/icons/icons.svg#cancel"></use>
               </svg>

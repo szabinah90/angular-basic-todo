@@ -1,14 +1,27 @@
 <form [formGroup]="newTodoItem">
     <div class="input-container">
       <mat-form-field>
-        <input matInput type="text" [formControl]="newItemText" placeholder="Todo text" />
+        <input matInput type="text" [formControl]="newItemText" placeholder="Todo text*" />
+        <mat-error *ngIf="newItemText.hasError('required')">
+          This field is required!
+        </mat-error>
+        <mat-error *ngIf="newItemText.hasError('maxlength')">
+          Max. character: 50!
+        </mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input matInput type="date" [formControl]="newItemDeadline" placeholder="Deadline"/>
+        <input matInput type="date" [formControl]="newItemDeadline" placeholder="Deadline*"/>
+        <mat-error *ngIf="newItemDeadline.hasError('required')">
+          This field is required!
+        </mat-error>
+        <mat-error *ngIf="newItemDeadline.hasError('checkDeadline')">
+          Deadline cannot be in the past!
+        </mat-error>
       </mat-form-field>
     </div>
     <div class="buttons">
-      <button mat-flat-button class="svg-btn purple" type="button" (click)="addNew()">
+      <button class="svg-btn purple" type="button" (click)="addNew()"
+              [disabled]="!this.newTodoItem.valid">
         <svg aria-hidden="true" focusable="false">
           <use xlink:href="../../../../../assets/icons/icons.svg#add-2"></use>
         </svg>

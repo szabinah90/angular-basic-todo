@@ -1,6 +1,9 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ITodo} from '../../../shared/interfaces/todo/todo.interface';
+import {Store} from '@ngxs/store';
+import {AddTodoEntry} from '../../../shared/store/actions/todo.actions';
+import uuidv1 from 'uuid/v1';
+import {checkDeadline} from '../../utils/validators/deadline.validator';
 
 @Component({
   selector: 'app-new, new-todo-item',
@@ -12,16 +15,17 @@ export class NewItemComponent implements OnInit {
   newItemText: FormControl;
   newItemDeadline: FormControl;
 
-  @Output() itemToAdd = new EventEmitter<ITodo>();
-  constructor() { }
+  constructor(private _store: Store) { }
 
   ngOnInit() {
     this._initForms();
   }
 
   private _initForms() {
-    this.newItemText = new FormControl(null, Validators.required);
-    this.newItemDeadline = new FormControl(null);
+    this.newItemText = new FormControl(null,
+      Validators.compose([Validators.required, Validators.maxLength(50)]));
+    this.newItemDeadline = new FormControl(null,
+      Validators.compose([Validators.required, checkDeadline()]));
 
     this.newTodoItem = new FormGroup({
       text: this.newItemText,
@@ -30,8 +34,10 @@ export class NewItemComponent implements OnInit {
   }
 
   addNew() {
+    console.log(this.newItemText.errors);
     if (this.newTodoItem.valid) {
-      this.itemToAdd.emit(this.newTodoItem.value);
+      const newTodo = { id: uuidv1(), ...this.newTodoItem.value };
+      this._store.dispatch(new AddTodoEntry(newTodo));
     }
     this.newTodoItem.reset();
   }
